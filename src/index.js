@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import * as serviceWorker from "./serviceWorker";
+import { ThemeProvider } from "@material-ui/styles";
+import Theme from "./components/Theme"
 
 const client = new ApolloClient({
   uri: "https://api.spacex.land/graphql/",
@@ -12,7 +14,9 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <ThemeProvider theme={Theme}>
+        <App />
+      </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
